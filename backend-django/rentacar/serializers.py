@@ -18,7 +18,7 @@ class CustomerSerializer(serializers.ModelSerializer):
         fields = ("id", "first_name", "last_name")
         
 class CarSerializer(serializers.ModelSerializer):
-    rent_per_day = serializers.StringRelatedField()
+    # rent_per_day = serializers.StringRelatedField()
     class Meta:
         model = Car
         fields = ("id", "plate_number", "brand", "model",

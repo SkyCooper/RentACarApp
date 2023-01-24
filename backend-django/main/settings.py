@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "corsheaders",
     'drf_yasg',
     'debug_toolbar',
+    'rangefilter',
 ]
 
 MIDDLEWARE = [
