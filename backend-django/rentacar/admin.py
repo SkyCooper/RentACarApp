@@ -1,11 +1,16 @@
 from django.contrib import admin
 from .models import Reservation, Customer, Car
-#? date range filter
+
+#? filter
+from django_admin_listfilter_dropdown.filters import RelatedDropdownFilter, DropdownFilter
 from rangefilter.filters import DateRangeFilter, DateTimeRangeFilter, NumericRangeFilter
 
+#? import-export 
+from import_export.admin import ImportExportModelAdmin
+from .resources import ReservationResource
 
 #! admin panelde customize için ModelAdmin inherit edilmeli
-class ReservationAdmin(admin.ModelAdmin):
+class ReservationAdmin(ImportExportModelAdmin):
     #? hangi field'lar görünsün
     list_display = ("id", "car", "customer", "start_date", "end_date")
     
@@ -18,7 +23,8 @@ class ReservationAdmin(admin.ModelAdmin):
     list_display_links = ("customer", )
     
     #? filitreleme için (django'nun default filitrelemesi, çok fazla seçenek yok)
-    list_filter = ("car", ("customer", DateRangeFilter ))
+    list_filter = ("car", "customer")
+    # list_filter = ("car", ("customer", DateRangeFilter ))
     
     #? sıralama (ilk açılış için) ("-name",) eksi de olabilir,
     ordering = ("start_date",)
@@ -36,6 +42,8 @@ class ReservationAdmin(admin.ModelAdmin):
     
     #?id'ye göre seçim yaptırıyor, yazılmazsa deafult tam liste çıkıyor.
     raw_id_fields = ('customer',)
+    
+    resource_class = ReservationResource
     
     #! fieldsets kullanınca fields kullanmaya gerek yok, bu daha detaylı bir görünüm veriyor.
     #? her obje, yani her product nasıl görünsün,

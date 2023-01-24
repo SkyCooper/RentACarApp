@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'debug_toolbar',
     'rangefilter',
+    'import_export',
 ]
 
 MIDDLEWARE = [
