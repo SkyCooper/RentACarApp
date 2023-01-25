@@ -30,11 +30,11 @@ class Car(models.Model):
         ("LPG", "LPG"),)
     
     BRAND = (
-        ("MRC", "Mercedes"),
+        ("Mercedes", "Mercedes"),
         ("BMW", "BMW"),
-        ("AUDI", "Audi"),
-        ("TYT", "Toyota"),
-        ("NS", "Nissan"),)
+        ("Audi", "Audi"),
+        ("Toyota", "Toyota"),
+        ("Nissan", "Nissan"),)
     
     PRICE = (
         (1, 250),
@@ -43,10 +43,10 @@ class Car(models.Model):
         (4, 1000),)
     
     YEAR = (
-        (2001, 2001),
-        (2002, 2002),
-        (2003, 2003),
-        (2004, 2004),)
+        (2021, 2021),
+        (2022, 2022),
+        (2023, 2023),
+        (2024, 2024),)
     
     plate_number = models.CharField(max_length=15, null=True, blank=True)
     brand = models.CharField(max_length=15, choices=BRAND)
@@ -68,7 +68,7 @@ class Reservation (models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     car = models.ForeignKey(Car, on_delete=models.CASCADE)
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name="reservations")
     
     class Meta:
         verbose_name = "Reservation"

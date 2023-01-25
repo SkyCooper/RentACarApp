@@ -15,7 +15,7 @@ class ReservationAdmin(ImportExportModelAdmin):
     list_display = ("id", "car", "customer", "start_date", "end_date")
     
     #? edit edilmesini istediklerimiz (true/false olursa tik aktif olur, açıklama/yazı vs. değiştirilebilir.)
-    list_editable = ( "car", )
+    # list_editable = ( "car", )
     
     #? link olsun, üzerine basınca objeye gitsin,
     #* default name field link'tir.

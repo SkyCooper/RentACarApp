@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'rangefilter',
     'import_export',
+    'django_admin_listfilter_dropdown',
 ]
 
 MIDDLEWARE = [

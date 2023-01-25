@@ -13,9 +13,10 @@ class ReservationSerializer(serializers.ModelSerializer):
         return obj.end_date.day - obj.start_date.day
         
 class CustomerSerializer(serializers.ModelSerializer):
+    reservations = ReservationSerializer(many=True, read_only=True)
     class Meta:
         model = Customer
-        fields = ("id", "first_name", "last_name")
+        fields = ("id", "first_name", "last_name", "reservations")
         
 class CarSerializer(serializers.ModelSerializer):
     # rent_per_day = serializers.StringRelatedField()
